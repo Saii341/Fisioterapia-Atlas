@@ -1,0 +1,173 @@
+body, html {
+    /*elimina los margenes por defecto de los navegadores*/
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    /*Elimina el scroll lateral (por si las dudas)*/
+    overflow-x: hidden;
+    font-family: Arial, sans-serif;
+    background-color: #121212; /*fondo oscurito*/
+    /*lo hace contenedor y acomoda los hijos verticalmente*/
+    display: flex;
+    flex-direction: column;
+
+}
+header{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #121212;
+    padding: 15px 0;
+    text-align: center;
+    color: #f0f0f0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+/*hace que ocupe todo el espacio que sobre*/
+.main-content {
+    flex: 1;
+}
+
+.grupo-titulo {
+    display: grid;
+    /*eso crea 3 eespacios que es en donde estaran las 3 imagenes de la portada*/
+    grid-template-columns: repeat(3, 1fr);
+    height: 100vh; /*y ocupa el 100% del alto de la ventana*/
+    width: 100vw; /*y del ancho tambien*/
+    overflow: hidden; /*recortar lo que no se ve en la ventana*/
+}
+
+.frontLateral, .frontCentral {
+    width: 100%;
+    height: 100%;
+    /*las imagenes cubren todo el espacio de su grid*/
+    object-fit: cover;
+    opacity: 0.85 ;
+}
+
+.img-titulo-centro {
+    position: relative;
+}
+
+.imagen-redonda {
+    position: absolute;
+    top: 40%; 
+    left: 50%;
+    transform: translate(-50%, -50%);
+    /*esto hace un centrado perfecto*/
+
+    width: 150px;
+    height: 150px;
+    border-radius: 50%; /*esto hace el circulo*/
+    overflow: hidden; /*Recorta la imagen*/
+
+    /*le pone un colorsito al borde color vino*/
+    border: 3px solid #722F37;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+    z-index: 15; /*hace que este encima de otros elementos*/
+}
+
+.imagen-redonda img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /*ajusta la imagen al circulo*/
+}
+
+.titulo {
+    position: absolute;
+    top: 54%; /*eslo pone el texto justo debajo de la imagen*/
+    left: 50%;
+    transform: translate(-50%, -50%); /*centrado PERRRRFECTO*/
+    color: aliceblue;
+    font-size: 1.5em;
+    text-align: center;
+    width: 100%;
+}
+
+.seccion-promos {
+    padding: 20px 0;
+}
+
+.promos {
+    text-align: center;
+    color: aliceblue;
+    margin-top: 50px;
+    font-size: 2em;
+}
+
+.imagenes-promo {
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+    margin: 50px auto;
+    flex-wrap: wrap;
+}
+
+.imgIzq, .imgDer {
+    width: 350px;
+    height: 250px;
+    object-fit: cover;
+    opacity: 0.85;
+    transition: all 0.3s ease;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.imgIzq:hover, .imgDer:hover {
+    opacity: 1;
+    transform: scale(1.15);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+}
+
+footer {
+    background-color: #722F37;
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+    width: 100%;
+}
+
+footer span {
+    display: inline-block;
+    margin: 5px 15px;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+footer span:hover {
+    color: #f0f0f0;
+}
+/*es lo que lo hace responsivo, pero falta hacerlo responsivo en movil*/
+@media (max-width: 768px) {
+    .grupo-titulo {
+        grid-template-columns: 1fr;
+        height: auto;
+    }
+    
+    .frontLateral {
+        display: none;
+    }
+    
+    .imagenes-promo {
+        flex-direction: column;
+        gap: 20px;
+    }
+    
+    .imgIzq, .imgDer {
+        width: 90%;
+        margin: 0 auto;
+    }
+    
+    .titulo {
+        font-size: 1.2em;
+        top: 55%;
+    }
+    
+    .imagen-redonda {
+        width: 120px;
+        height: 120px;
+        top: 35%;
+    }
+}
