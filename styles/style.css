@@ -1,13 +1,10 @@
 body, html {
-    /*elimina los margenes por defecto de los navegadores*/
     margin: 0;
     padding: 0;
     height: 100%;
-    /*Elimina el scroll lateral (por si las dudas)*/
     overflow-x: hidden;
     font-family: Arial, sans-serif;
     background-color: #121212; /*fondo oscurito*/
-    /*lo hace contenedor y acomoda los hijos verticalmente*/
     display: flex;
     flex-direction: column;
 
@@ -31,7 +28,6 @@ a {
 a:hover{
     color:bisque;
 }
-/*hace que ocupe todo el espacio que sobre*/
 .main-content {
     flex: 1;
 }
@@ -39,17 +35,15 @@ a:hover{
 
 .grupo-titulo {
     display: grid;
-    /*eso crea 3 eespacios que es en donde estaran las 3 imagenes de la portada*/
     grid-template-columns: repeat(3, 1fr);
-    height: 100vh; /*y ocupa el 100% del alto de la ventana*/
-    width: 100vw; /*y del ancho tambien*/
-    overflow: hidden; /*recortar lo que no se ve en la ventana*/
+    height: 100vh; 
+    width: 100vw; 
+    overflow: hidden; 
 }
 
 .frontLateral, .frontCentral {
     width: 100%;
     height: 100%;
-    /*las imagenes cubren todo el espacio de su grid*/
     object-fit: cover;
     opacity: 0.85 ;
 }
@@ -70,7 +64,6 @@ a:hover{
     border-radius: 50%; /*esto hace el circulo*/
     overflow: hidden; /*Recorta la imagen*/
 
-    /*le pone un colorsito al borde color vino*/
     border: 3px solid #722F37;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
     z-index: 15; /*hace que este encima de otros elementos*/
@@ -79,14 +72,14 @@ a:hover{
 .imagen-redonda img {
     width: 100%;
     height: 100%;
-    object-fit: cover; /*ajusta la imagen al circulo*/
+    object-fit: cover; 
 }
 
 .titulo {
     position: absolute;
-    top: 54%; /*eslo pone el texto justo debajo de la imagen*/
+    top: 54%; 
     left: 50%;
-    transform: translate(-50%, -50%); /*centrado PERRRRFECTO*/
+    transform: translate(-50%, -50%);
     color: aliceblue;
     font-size: 1.5em;
     text-align: center;
@@ -147,7 +140,6 @@ footer span {
 footer span:hover {
     color: #f0f0f0;
 }
-/*es lo que lo hace responsivo, pero falta hacerlo responsivo en movil*/
 @media (max-width: 768px) {
     .grupo-titulo {
         grid-template-columns: 1fr;
@@ -177,5 +169,167 @@ footer span:hover {
         width: 120px;
         height: 120px;
         top: 35%;
+    }
+}
+/* ===== SECCIÓN PROMOCIONES - CSS SIMPLIFICADO ===== */
+
+.promociones {
+    padding: 40px 20px;
+    background: #f8f9fa;
+}
+
+.promociones-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.promociones-header h1 {
+    color: #8B0000;
+    font-size: 2rem;
+    margin-bottom: 15px;
+}
+
+.promociones-header p {
+    color: #666;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.banner-promocional {
+    background: #8B0000;
+    color: white;
+    padding: 30px;
+    border-radius: 8px;
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.banner-promocional h2 {
+    margin-bottom: 15px;
+}
+
+.btn-banner {
+    display: inline-block;
+    background: white;
+    color: #8B0000;
+    padding: 10px 25px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.promociones-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.promocion-card {
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+    overflow: hidden;
+}
+
+.promocion-imagen {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+}
+
+.promocion-contenido {
+    padding: 20px;
+}
+
+.promocion-titulo {
+    color: #8B0000;
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+}
+
+.promocion-descripcion {
+    color: #666;
+    margin-bottom: 15px;
+    font-size: 0.9rem;
+}
+
+.promocion-precio {
+    margin-bottom: 15px;
+}
+
+.precio-original {
+    color: #999;
+    text-decoration: line-through;
+    margin-right: 10px;
+}
+
+.precio-actual {
+    color: #8B0000;
+    font-size: 1.3rem;
+    font-weight: bold;
+}
+
+.btn-reservar {
+    display: block;
+    width: 100%;
+    background: #8B0000;
+    color: white;
+    padding: 12px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+}
+
+.btn-reservar:hover {
+    background: #A52A2A;
+}
+
+/* Etiqueta de descuento */
+.etiqueta-promocion {
+    background: #8B0000;
+    color: white;
+    padding: 5px 12px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    display: inline-block;
+    margin-bottom: 10px;
+}
+
+.contador-tiempo {
+    background: #f0f0f0;
+    padding: 10px;
+    border-radius: 4px;
+    margin: 10px 0;
+    text-align: center;
+}
+
+.tiempo-restante {
+    color: #8B0000;
+    font-weight: bold;
+}
+
+@media (max-width: 768px) {
+    .promociones {
+        padding: 30px 15px;
+    }
+    
+    .promociones-header h1 {
+        font-size: 1.7rem;
+    }
+    
+    .banner-promocional {
+        padding: 20px 15px;
+    }
+    
+    .promociones-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
     }
 }
