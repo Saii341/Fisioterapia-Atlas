@@ -10858,10 +10858,10 @@ body.has-fixed-navbar {
   }
 }
 body {
-  background-image: linear-gradient(rgba(47, 23, 15, 0.65), rgba(47, 23, 15, 0.65)), url("../img/");
+  background-image: linear-gradient(rgba(47, 23, 15, 0.65), rgba(47, 23, 15, 0.65)), url("../img/Cita.png");
   background-attachment: fixed;
   background-position: center;
-  background-size: cover;
+  background-size: contain;
 }
 
 p {
