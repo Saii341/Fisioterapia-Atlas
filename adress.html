@@ -18,13 +18,13 @@
         :root {
             --color-principal-text: #3e2f26; /* Marrón oscuro para textos generales */
             --color-primary-bootstrap: #530101; /* Rojo/Marrón oscuro (Identidad del Index) */
-            
+            --color-primary-navbar: #f9d8c3;
             /* FONDOS */
             --bg-body-soft: #fdfaf6; /* FONDO PASTELL MUY CLARO PARA EL BODY */
             --bg-faded-section: #fff8ef; /* Fondo de sección más claro y pastel (crema) */
-            --bg-navbar-clear: rgba(255, 255, 255, 0.9); /* Navbar casi blanco, ligeramente transparente */
+            --bg-navbar-clear: rgba(247, 232, 205, 0.95); /* Navbar casi blanco, ligeramente transparente */
         }
-
+        
         /* --- ESTILOS GENERALES Y DE TIPOGRAFÍA --- */
         body {
             background-color: var(--bg-body-soft);
@@ -73,7 +73,7 @@
             background-color: var(--bg-faded-section); 
             padding: 1.5rem 2.5rem;
             border-radius: 0.5rem;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 15px rgba(169, 0, 0, 0.1);
             display: inline-block; /* Para que el fondo no ocupe todo el ancho */
         }
         header .site-heading-upper {
@@ -99,6 +99,39 @@
         .nav-link:hover {
             color: var(--color-primary-bootstrap) !important;
         }
+            /*MODIFIQUE ESTOOO
+             */
+    .navbar.scrolled {
+        background: rgba(247, 232, 205, 0.95) !important;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        transition: background 0.3s ease;
+    }
+
+    .navbar.scrolled .navbar-brand,
+    .navbar.scrolled .nav-link {
+        color: var(--color-primary-bootstrap) !important;
+    }
+
+    .navbar.scrolled .nav-link:hover {
+        color: #3f0101 !important;
+    }
+
+    /* Estilos normales del navbar (sin scroll) */
+    .navbar {
+        background: var(--bg-navbar-clear) !important;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        transition: all 0.3s ease;
+    }
+
+    .navbar-brand, .nav-link {
+        color: var(--color-principal-text) !important;
+        font-weight: 600;
+        transition: color 0.3s ease;
+    }
+
+    .nav-link:hover {
+        color: var(--color-primary-bootstrap) !important;
+    }
 
         @media (max-width: 991.98px) {
             header {
@@ -266,10 +299,10 @@
                                 <div class="contact-details-map text-start">
                                     <h4>¡Llámanos!</h4>
                                     <p class="mb-1">
-                                        <strong>Teléfono:</strong> <a href="tel:+524448050003" style="color: var(--color-primary-bootstrap);"> +(52) 444 805 0003</a>
+                                        <strong>Teléfono:</strong> <a href="tel:+52 1 444 805 0003" style="color: var(--color-primary-bootstrap);"> +52 1 444 805 0003</a>
                                     </p>
                                     <p class="mb-0">
-                                        <strong>Email:</strong> <a href="mailto:contacto@fisioterapiaatlas.com" style="color: var(--color-primary-bootstrap);">contacto@fisioterapiaatlas.com</a>
+                                        <strong>Email:</strong> <a href="mailto:contacto@fisioterapiaatlas.com" style="color: var(--color-primary-bootstrap);">atlasclubfisioterapia@gmail.com</a>
                                     </p>
                                 </div>
                             </div>
@@ -280,17 +313,15 @@
                                     
                                     <h4>⏰ Horario de Atención</h4>
                                     <p class="mb-2">
-                                        <strong>Lunes a Viernes:</strong><br>
+                                        <strong>Lunes a Sábado:</strong><br>
                                         <span class="d-block" style="font-size: 1.5rem; font-weight: 700;">9:00 - 14:00 hrs</span>
-                                        <span class="d-block" style="font-size: 1.5rem; font-weight: 700;">16:00 - 19:00 hrs</span>
                                     </p>
                                     
                                     <h4 class="mt-3">📌 Puntos de Referencia</h4>
                                     <ul>
-                                        <li>Frente a la Pastelería "La Superior".</li>
+                                        <li>Frente a la Panaderia "La Superior".</li>
                                         <li>A solo 2 cuadras de la Farmacia Guadalajara.</li>
                                         <li>Cercano al Parque de Las Águilas.</li>
-                                        <li>Fácil acceso desde la Av. Salvador Nava.</li>
                                     </ul>
                                 </div>
                             </div>
@@ -308,5 +339,28 @@
     
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="js/scripts.js"></script>
+    <script>
+        // Detectar scroll para cambiar navbar
+        window.addEventListener('scroll', function() {
+            const navbar = document.getElementById('mainNav');
+            const scrolled = window.scrollY > 100; // Cambia después de 100px de scroll
+            
+            if (scrolled) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // También ejecutar al cargar la página por si ya hay scroll
+        window.addEventListener('load', function() {
+            const navbar = document.getElementById('mainNav');
+            const scrolled = window.scrollY > 100;
+            
+            if (scrolled) {
+                navbar.classList.add('scrolled');
+            }
+        });
+</script>
 </body>
 </html>
