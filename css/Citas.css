@@ -1,0 +1,134 @@
+ :root {
+            --color-vino: #a82626;
+            --color-beige: #fcf4e8;
+            --color-texto: #333;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url("../img/Cita.png"); 
+            background-size: cover;
+            background-position: center;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px 0; /* Espacio arriba y abajo para scrollear si es necesario */
+        }
+
+        .card-container {
+            background-color: var(--color-beige);
+            width: 100%;
+            max-width: 500px;
+            padding: 40px;
+            border-radius: 4px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.7);
+            text-align: center;
+            box-sizing: border-box; /* Para que el padding no rompa el ancho */
+        }
+
+        .logo-web {
+            width: 140px;
+            height: auto;
+            margin-bottom: 10px;
+            mix-blend-mode: multiply;
+        }
+
+        .sub-header {
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--color-texto);
+            margin-bottom: 25px;
+            border-bottom: 1px solid #d4c4b0;
+            padding-bottom: 15px;
+        }
+
+        h1 {
+            font-weight: 300;
+            font-size: 26px;
+            margin: 0 0 25px 0;
+            text-transform: uppercase;
+            color: var(--color-vino);
+        }
+
+        /* Layout de dos columnas para campos cortos */
+        .row {
+            display: flex;
+            gap: 15px;
+        }
+        .col {
+            flex: 1;
+        }
+
+        .form-group { margin-bottom: 15px; text-align: left; }
+
+        label {
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            display: block;
+            margin-bottom: 5px;
+            color: var(--color-texto);
+        }
+
+        input, textarea, select {
+            width: 100%;
+            padding: 12px;
+            background: white;
+            border: 1px solid #dcdcdc;
+            border-left: 4px solid var(--color-vino);
+            font-family: 'Montserrat', sans-serif;
+            font-size: 14px;
+            box-sizing: border-box;
+            color: #444;
+        }
+
+        input:focus, textarea:focus, select:focus {
+            outline: none;
+            background-color: #fffbf7;
+        }
+
+        /* Estilo para el Checkbox de la oferta */
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+            background: white;
+            padding: 10px;
+            border: 1px dashed var(--color-vino);
+            margin-top: 10px;
+        }
+        .checkbox-group input {
+            width: auto;
+            margin-right: 10px;
+            border: none;
+        }
+        .checkbox-group label {
+            margin-bottom: 0;
+            color: var(--color-vino);
+            cursor: pointer;
+        }
+
+        button {
+            background-color: var(--color-vino);
+            color: white;
+            border: none;
+            padding: 18px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 600;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 25px;
+            transition: 0.3s;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        button:hover { background-color: #7c1a1a; transform: translateY(-1px); }
+        
+        #imgHidden { display: none; }
