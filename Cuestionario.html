@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cita - The Atlas</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/Citas.css">
+</head>
+<body>
+
+    <div class="card-container">
+        <img src="img/Atlas.jpg" alt="The Atlas Logo" class="logo-web" id="logoVisual">
+        
+        <div class="sub-header">Respiración • Movimiento • Vida</div>
+        
+        <h1>Ficha de Cita</h1>
+        
+        <form id="appointmentForm">
+            <div class="form-group">
+                <label>Nombre Completo</label>
+                <input type="text" id="nombre" placeholder="Nombre y Apellido" required>
+            </div>
+
+            <div class="row">
+                <div class="col form-group">
+                    <label>Edad</label>
+                    <input type="number" id="edad" min="1" max="120" placeholder="Ej. 28" required>
+                </div>
+                <div class="col form-group">
+                    <label>Sexo</label>
+                    <select id="sexo" required>
+                        <option value="" disabled selected>Seleccionar</option>
+                        <option value="Femenino">Femenino</option>
+                        <option value="Masculino">Masculino</option>
+                        <option value="Otro">Otro</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col form-group">
+                    <label>Fecha</label>
+                    <input type="date" id="fecha" required>
+                </div>
+                <div class="col form-group">
+                    <label>Hora</label>
+                    <input type="time" id="hora" required>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>Tratamiento Especial / Padecimiento</label>
+                <input type="text" id="tratamiento" placeholder="¿Tienes alguna condición específica?">
+            </div>
+
+            <div class="form-group">
+                <label>Motivo de Consulta (Detalles)</label>
+                <textarea id="motivo" rows="2" placeholder="Describe brevemente el dolor o necesidad"></textarea>
+            </div>
+
+            <div class="checkbox-group">
+                <input type="checkbox" id="oferta">
+                <label for="oferta">¡Me interesa recibir la oferta del mes y promociones!</label>
+            </div>
+
+            <button type="button" onclick="generarPDF()">Confirmar y Descargar</button>
+        </form>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    
+    <script>
+        function generarPDF() {
+            const { jsPDF } = window.jspdf;
+            const doc = new jsPDF();
+            
+            // Obtener valores
+            const nombre = document.getElementById('nombre').value;
+            const edad = document.getElementById('edad').value;
+            const sexo = document.getElementById('sexo').value;
+            const fecha = document.getElementById('fecha').value;
+            const hora = document.getElementById('hora').value;
+            const tratamiento = document.getElementById('tratamiento').value;
+            const motivo = document.getElementById('motivo').value;
+            const quiereOferta = document.getElementById('oferta').checked;
+            
+            const imgElement = document.getElementById('logoVisual');
+
+            if(!nombre || !fecha || !hora || !edad || !sexo) {
+                alert("Por favor completa los campos obligatorios.");
+                return;
+            }
+
+            // --- COLORES CORPORATIVOS ---
+            const colorVino = [168, 38, 38]; // #a82626
+            const colorBeige = [252, 244, 232]; // #fcf4e8
+            const colorGris = [80, 80, 80];
+
+            // 1. ENCABEZADO CON LOGO
+            try {
+                doc.addImage(imgElement, 'JPEG', 80, 10, 50, 0); 
+            } catch (error) {
+                doc.setFont("times", "italic");
+                doc.setFontSize(30);
+                doc.setTextColor(...colorVino);
+                doc.text("The Atlas", 105, 30, null, null, "center");
+            }
+
+            // Subtítulo
+            doc.setTextColor(100);
+            doc.setFontSize(9);
+            doc.setFont("helvetica", "normal");
+            doc.text("RESPIRACIÓN • MOVIMIENTO • VIDA", 105, 50, null, null, "center");
+
+            // Línea Gruesa Vino
+            doc.setDrawColor(...colorVino);
+            doc.setLineWidth(1.5);
+            doc.line(20, 55, 190, 55);
+
+            // Título del Documento
+            doc.setFontSize(18);
+            doc.setTextColor(...colorVino);
+            doc.setFont("helvetica", "bold");
+            doc.text("FICHA DE RESERVACIÓN", 105, 70, null, null, "center");
+
+            let y = 85; // Coordenada vertical inicial
+
+            // --- FUNCIÓN HELPER PARA SECCIONES ---
+            function crearSeccion(titulo, altura = 8) {
+                // Fondo Beige para el título de sección
+                doc.setFillColor(...colorBeige);
+                doc.rect(20, y, 170, altura, 'F');
+                
+                // Texto
+                doc.setFontSize(11);
+                doc.setTextColor(...colorVino);
+                doc.setFont("helvetica", "bold");
+                doc.text(titulo, 25, y + 5.5);
+                y += 15; // Bajamos el cursor
+            }
+
+            function agregarDato(etiqueta, valor, xOffset = 0, saltoLinea = true) {
+                doc.setFontSize(10);
+                doc.setTextColor(150); // Color gris claro para etiqueta
+                doc.setFont("helvetica", "normal");
+                doc.text(etiqueta, 25 + xOffset, y);
+                
+                doc.setTextColor(0); // Color negro para valor
+                doc.setFont("helvetica", "bold");
+                doc.text(valor || "N/A", 25 + xOffset, y + 5);
+                
+                if(saltoLinea) y += 12;
+            }
+
+            // --- SECCIÓN 1: PACIENTE ---
+            crearSeccion("DATOS DEL PACIENTE");
+            
+            agregarDato("NOMBRE COMPLETO", nombre.toUpperCase());
+            y -= 12; // Regresamos para poner edad y sexo en la misma línea visual pero mas abajo
+            y += 10; // Ajuste manual
+            
+            // Fila de Edad y Sexo
+            doc.setFontSize(10);
+            doc.setTextColor(150);
+            doc.text("EDAD", 25, y);
+            doc.text("SEXO", 100, y);
+            
+            doc.setTextColor(0);
+            doc.setFont("helvetica", "bold");
+            doc.text(`${edad} años`, 25, y + 5);
+            doc.text(sexo, 100, y + 5);
+            y += 15;
+
+            // --- SECCIÓN 2: CITA ---
+            crearSeccion("DETALLES DE LA CITA");
+
+            doc.setFontSize(10);
+            doc.setTextColor(150);
+            doc.text("FECHA AGENDADA", 25, y);
+            doc.text("HORA", 100, y);
+            
+            doc.setTextColor(0);
+            doc.setFont("helvetica", "bold");
+            // Formatear fecha para que se vea bonita
+            const fechaObj = new Date(fecha + 'T00:00:00');
+            const opcionesFecha = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+            const fechaTexto = fechaObj.toLocaleDateString('es-ES', opcionesFecha);
+            
+            doc.text(fechaTexto.charAt(0).toUpperCase() + fechaTexto.slice(1), 25, y + 5);
+            doc.text(hora, 100, y + 5);
+            y += 15;
+
+            // --- SECCIÓN 3: INFORMACIÓN CLÍNICA ---
+            crearSeccion("INFORMACIÓN CLÍNICA");
+
+            if (tratamiento) {
+                agregarDato("TRATAMIENTO ESPECIAL / PADECIMIENTO", tratamiento);
+            }
+            
+            if (motivo) {
+                doc.setTextColor(150);
+                doc.setFont("helvetica", "normal");
+                doc.text("MOTIVO DE CONSULTA", 25, y);
+                y += 5;
+                doc.setTextColor(0);
+                doc.setFont("helvetica", "italic");
+                const splitMotivo = doc.splitTextToSize(motivo, 160);
+                doc.text(splitMotivo, 25, y);
+                y += (splitMotivo.length * 5) + 10;
+            } else {
+                y += 5;
+            }
+
+            // --- SECCIÓN 4: OFERTA / EXTRAS ---
+            if (quiereOferta) {
+                doc.setDrawColor(...colorVino);
+                doc.setLineWidth(0.5);
+                doc.line(20, y, 190, y); // Línea separadora
+                y += 10;
+                
+                doc.setFillColor(240, 255, 240); // Fondo verdoso muy suave
+                doc.setDrawColor(0, 100, 0); // Borde verde
+                doc.roundedRect(20, y, 170, 20, 3, 3, 'FD');
+                
+                doc.setTextColor(0, 100, 0);
+                doc.setFontSize(12);
+                doc.setFont("helvetica", "bold");
+                doc.text("INTERESADO EN OFERTAS Y PROMOCIONES", 105, y + 13, null, null, "center");
+                y += 30;
+            }
+
+            // Pie de página
+            doc.setDrawColor(200);
+            doc.line(20, 275, 190, 275);
+            doc.setFontSize(8);
+            doc.setTextColor(100);
+            doc.setFont("helvetica", "normal");
+            doc.text("The Atlas Fisioterapia - San Luis Potosí, S.L.P.", 105, 282, null, null, "center");
+            doc.text("Este documento es un comprobante de solicitud de cita.", 105, 286, null, null, "center");
+
+            doc.save(`Cita_${nombre.replace(/\s+/g, '_')}.pdf`);
+        }
+    </script>
+</body>
+</html>
