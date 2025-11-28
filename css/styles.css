@@ -3753,7 +3753,39 @@ textarea.form-control-lg {
   align-items: center;
   justify-content: space-between;
   padding: var(--bs-navbar-padding-y) var(--bs-navbar-padding-x);
+
+  transition: all 0.3s ease-in-out;
 }
+.navbar.scrolled {
+    position: fixed !important;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: rgba(83, 1, 1, 1) !important; /* Color oscuro con transparencia */
+    backdrop-filter: blur(10px); /* Efecto glass */
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+    z-index: 1030; /* Mayor que el z-index de Bootstrap */
+    animation: slideDown 0.3s ease-in-out;
+}
+
+/* Animación suave al fijarse */
+@keyframes slideDown {
+    from {
+        transform: translateY(-100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* Ajuste para el contenido cuando el navbar se vuelve fixed */
+body.has-fixed-navbar {
+    padding-top: 80px; /* Ajusta según la altura de tu navbar */
+}
+
+
 .navbar > .container,
 .navbar > .container-fluid,
 .navbar > .container-sm,
