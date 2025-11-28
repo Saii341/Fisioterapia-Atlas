@@ -1,0 +1,165 @@
+.promociones {
+    padding: 40px 20px;
+    background: #f8f9fa;
+}
+
+.promociones-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.promociones-header h1 {
+    color: #8B0000;
+    font-size: 2rem;
+    margin-bottom: 15px;
+}
+
+.promociones-header p {
+    color: #666;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* Banner principal */
+.banner-promocional {
+    background: #8B0000;
+    color: white;
+    padding: 30px;
+    border-radius: 8px;
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.banner-promocional h2 {
+    margin-bottom: 15px;
+}
+
+.btn-banner {
+    display: inline-block;
+    background: white;
+    color: #8B0000;
+    padding: 10px 25px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+/* Grid de promociones */
+.promociones-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Tarjetas */
+.promocion-card {
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+    overflow: hidden;
+}
+
+.promocion-imagen {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+}
+
+.promocion-contenido {
+    padding: 20px;
+}
+
+.promocion-titulo {
+    color: #8B0000;
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+}
+
+.promocion-descripcion {
+    color: #666;
+    margin-bottom: 15px;
+    font-size: 0.9rem;
+}
+
+.promocion-precio {
+    margin-bottom: 15px;
+}
+
+.precio-original {
+    color: #999;
+    text-decoration: line-through;
+    margin-right: 10px;
+}
+
+.precio-actual {
+    color: #8B0000;
+    font-size: 1.3rem;
+    font-weight: bold;
+}
+
+.btn-reservar {
+    display: block;
+    width: 100%;
+    background: #8B0000;
+    color: white;
+    padding: 12px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+}
+
+.btn-reservar:hover {
+    background: #A52A2A;
+}
+
+/* Etiqueta de descuento */
+.etiqueta-promocion {
+    background: #8B0000;
+    color: white;
+    padding: 5px 12px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    display: inline-block;
+    margin-bottom: 10px;
+}
+
+/* Contador simple */
+.contador-tiempo {
+    background: #f0f0f0;
+    padding: 10px;
+    border-radius: 4px;
+    margin: 10px 0;
+    text-align: center;
+}
+
+.tiempo-restante {
+    color: #8B0000;
+    font-weight: bold;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .promociones {
+        padding: 30px 15px;
+    }
+    
+    .promociones-header h1 {
+        font-size: 1.7rem;
+    }
+    
+    .banner-promocional {
+        padding: 20px 15px;
+    }
+    
+    .promociones-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+}
