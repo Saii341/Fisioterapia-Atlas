@@ -640,6 +640,7 @@ progress {
   padding-left: calc(var(--bs-gutter-x) * 0.5);
   margin-right: auto;
   margin-left: auto;
+  
 }
 
 @media (min-width: 576px) {
@@ -7588,6 +7589,7 @@ body.has-fixed-navbar {
   margin-left: auto !important;
 }
 
+
 .my-0 {
   margin-top: 0 !important;
   margin-bottom: 0 !important;
@@ -10858,10 +10860,11 @@ body.has-fixed-navbar {
   }
 }
 body {
-  background-image: linear-gradient(rgba(47, 23, 15, 0.65), rgba(47, 23, 15, 0.65)), url("../img/Cita.png");
+  background-image: linear-gradient(rgba(47, 23, 15, 0.65), rgba(47, 23, 15, 0.65)), url("../img/bckgnd2.webp");
   background-attachment: fixed;
+  background-repeat: no-repeat;
   background-position: center;
-  background-size: contain;
+  background-size: cover;
 }
 
 p {
@@ -11058,4 +11061,24 @@ p {
 
 .address strong {
   font-size: 1.2rem;
+}
+
+/*
+PARA SECCION DE FISIOTERAPEUTA Y QUE HAYA MARGEN SUPERIOR Y ES RESPONSIVO
+*/
+.about-heading-content .bg-faded.rounded.p-5 {
+    margin-top: 3rem !important;  /* Ajusta este valor */
+    position: relative;
+    z-index: 2;
+}
+
+
+@media (min-width: 992px) {
+    .about-heading-content .bg-faded.rounded.p-5 {
+        margin-top: 4rem !important;
+    }
+}
+
+.about-heading-content .bg-faded.rounded.p-5 {
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
 }

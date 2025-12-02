@@ -8,7 +8,7 @@
             font-family: 'Montserrat', sans-serif;
             justify-content: center;
             padding: 20px 0; /* Espacio arriba y abajo para scrollear si es necesario */
-            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url("../img/Cita.png");
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url("../img/masajes2.webp");
             background-size: cover;
             background-position: center;
             min-height: 100vh;
