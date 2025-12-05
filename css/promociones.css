@@ -8,16 +8,16 @@
     --accent-color: #e74c3c;
     --success-color: #27ae60;
     --warning-color: #f39c12;
-    --light-color: #ecf0f1;
+    --light-color: #f6e1c5;
     --dark-color: #1a252f;
-    --gray-light: #bdc3c7;
+    --gray-light: #f6e1c5;
     --text-color: #333;
     --text-light: #666;
     --shadow: 0 4px 12px rgba(0,0,0,0.1);
     --shadow-hover: 0 8px 25px rgba(0,0,0,0.15);
     --transition: all 0.3s ease;
     --border-radius: 12px;
-    --rojo-oscuro: #540101;
+    --rojo-oscuro: rgba(83, 1, 1, 1);
     --rojo-claro: #722F37;
     --fondo-oscuro: #121212;
 }
@@ -195,7 +195,7 @@ a:hover {
 /* ===== SECCIÓN PRINCIPAL DE PROMOCIONES ===== */
 .promociones {
     padding: 100px 0 80px;
-    background: linear-gradient(to bottom, #ffffff 0%, #f8f9fa 100%);
+    background: linear-gradient(to bottom, #f6e1c5 0%, #f6e1c5 100%);
     min-height: 100vh;
 }
 
@@ -276,7 +276,7 @@ a:hover {
 
 .btn-banner {
     display: inline-block;
-    background-color: white;
+    background-color: #f6e1c5;
     color: var(--rojo-oscuro);
     padding: 15px 35px;
     border-radius: 50px;
@@ -306,7 +306,7 @@ a:hover {
 
 /* Tarjeta de promoción */
 .promocion-card {
-    background-color: white;
+    background-color: #f6e1c5;
     border-radius: var(--border-radius);
     overflow: hidden;
     box-shadow: var(--shadow);
